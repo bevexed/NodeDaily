@@ -1,0 +1,188 @@
+body {
+    height: 32.4rem;
+    background: black url(../img/invit_friend/background.png) -0.2rem -0.6rem;
+    background-size: 8.2rem;
+}
+
+header {
+    margin-top: .5rem;
+    margin-left: .25rem;
+
+}
+
+header img {
+    width: 6.6rem;
+    margin: auto;
+}
+
+.bar {
+    position: fixed;
+    right: 0;
+    top: 2.5rem;
+    width: .6rem;
+    height: 1.5rem;
+    background-color: #edc97c;
+    border-radius: .1rem 0 0 .1rem;
+    text-align: center;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+    font-size: .3rem;
+    line-height: .6rem;
+}
+
+.bonus {
+    width: 6.2rem;
+    margin-top: .5rem;
+    background: url("../img/invit_friend/back_1.png") no-repeat top right;
+    background-size: 5.56rem;
+}
+
+.bonus_da {
+    top: 1.1rem;
+    width: 5.4rem;
+    padding: .5rem .3rem .34rem .3rem;
+    background: rgba(255, 255, 255, .1);
+    border-radius: .3rem;
+    text-align: left;
+    text-indent: 2em;
+    line-height: .5rem;
+}
+
+.bonus_da > img {
+    width: 5.4rem;
+    margin-top: .5rem;
+}
+
+table {
+    width: 5.4rem;
+    margin-top: .4rem;
+}
+
+tr.success {
+    height: .7rem;
+    line-height: .7rem;
+}
+
+tr.first {
+    height: 1.1rem;
+}
+
+.head {
+    background: #edc97c;
+    height: .5rem;
+}
+
+table, table tr th, table tr td {
+    border: .01rem solid #c5a562;
+    text-indent: 0;
+    text-align: center;
+}
+
+.fx {
+    width: 5.4rem;
+    height: .5rem;
+    line-height: .5rem;
+    background: #322b13;
+    text-indent: 0;
+    text-align: center;
+    margin: .24rem 0;
+}
+
+/*邀请攻略 */
+.strategy {
+    width: 6.4rem;
+    margin-top: 1.5rem;
+    background: url("../img/invit_friend/line.png") no-repeat top left;
+    background-size: 5.56rem;
+}
+
+.strategy_da {
+    top: 1.1rem;
+    width: 5.4rem;
+    padding: .3rem .3rem .2rem .3rem;
+    background: rgba(255, 255, 255, .1);
+    border-radius: .3rem;
+    line-height: .5rem;
+    margin-left: .2rem;
+}
+
+ul > li {
+    height: 1.8rem;
+}
+
+ul > li:nth-child(2) {
+    border-bottom: 1px dashed #edc97c;
+    border-top: 1px dashed #edc97c;
+}
+
+ul > li > img {
+    margin-top: .41rem;
+    margin-left: .42rem;
+}
+
+ul > li > p {
+    width: 3.09rem;
+    font-size: .28rem;
+    margin-top: .3rem;
+}
+
+/*邀请大人*/
+
+.invint {
+    width: 6.2rem;
+    margin-top: 1.5rem;
+    background: url("../img/invit_friend/p3.png") no-repeat top right;
+    background-size: 5.56rem;
+}
+
+footer {
+    text-align: center;
+    margin-top: 1.8rem;
+    line-height: .42rem;
+}
+
+.buttons {
+    margin-top: .34rem;
+    height: .98rem;
+}
+
+.button {
+    width: 3.75rem;
+    text-align: center;
+    line-height: .98rem;
+    font-size: .28rem;
+    color: #413313;
+}
+
+button>img{
+    width: .3rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

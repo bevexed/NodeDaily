@@ -1,0 +1,90 @@
+
+html, body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background-image: linear-gradient(0deg, #00123D 0%, #00206E 100%);
+    /* Center slide text vertically */
+}
+
+header {
+    top: .96rem;
+    font-size: .4rem;
+}
+
+p.m_center {
+    width: 5.9rem;
+    top: 1.5rem;
+    font-size: .28rem;
+    text-align: left;
+
+}
+
+.main_pic1 {
+    top: 2rem;
+    width: 4.98rem;
+}
+
+.base_img1 {
+    width: 6.4rem;
+    /*top: .6rem;*/
+}
+
+footer {
+    top: .2rem;
+    width: 5.9rem;
+    height: 3.04rem;
+    text-align: left;
+    margin: 0 auto;
+}
+
+footer > div {
+    left: .36rem;
+    float: left;
+    height: .68rem;
+    width: .04rem;
+    background-color: #1465d5;
+    top: .7rem;
+}
+
+footer > ul > li: {
+    margin-top: .32rem;
+}
+
+footer > ul > li > img {
+    width: .72rem;
+    vertical-align: middle;
+}
+
+footer > ul > li > span {
+    font-size: .28rem;
+    color: #1465d6;
+    vertical-align: middle;
+    margin-left: .2rem;
+}
+
+footer p {
+    width: 4.98rem;
+    height: .64rem;
+    font-size: .22rem;
+    line-height: 1.5;
+    color: rgba(20, 101, 214, .8);
+}

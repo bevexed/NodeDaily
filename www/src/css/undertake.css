@@ -1,0 +1,191 @@
+html {
+    background: #ffadad;
+}
+
+.bg {
+    width: 100%;
+}
+
+.linkman {
+    width: 0.76rem;
+    height: 0.76rem;
+    display: block;
+    float: left;
+    margin-left: 0.65rem;
+    margin-top: 0.48rem;
+}
+
+.dialog {
+    width: 4.35rem;
+    border-radius: 4px;
+    background: #ffc0c0;
+    float: left;
+    margin-top: 0.48rem;
+    margin-left: 0.33rem;
+    font-size: 0.26rem;
+    padding: 0.23rem 0.43rem;
+    position: relative;
+}
+.dialog span{
+    color: #ff4f38;
+}
+.arrow {
+    width: 0.25rem;
+    height: 0.25rem;
+    position: absolute;
+    left: -0.25rem;
+    top: 0.3rem;
+}
+
+.register{
+    width: 6.98rem;
+    height: 4.64rem;
+    margin-left: 0.26rem;
+    margin-top: 0.49rem;
+    background: url("../img/register_03.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.picture{
+    background: url("../img/title_03.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 2.84rem;
+    height: 0.7rem;
+    display: block;
+    margin: 0 auto;
+    margin-top: 0.43rem;
+    font-size: 0.32rem;
+    text-align: center;
+    line-height: 0.7rem;
+}
+/*input框*/
+.phone{
+    width: 4.73rem;
+    height: 0.84rem;
+    font-size: 0.28rem;
+    float: left;
+    margin-left: 0.94rem;
+    outline: none;
+    border: 2px solid #ff9486;
+    padding-left: 0.31rem;
+    border-radius: 8px;
+    margin-top: 0.39rem;
+    color: #323232;
+}
+.button{
+    width: 5.1rem;
+    height: 0.88rem;
+    float: left;
+    margin-left: 0.94rem;
+    border: none;
+    background: #ff4f38;
+    border-radius: 8px;
+    font-size: 0.32rem;
+    color: #fff;
+    margin-top: 0.19rem;
+}
+.register a{
+    color: #288ae5;
+    font-size: 0.26rem;
+}
+.protocol{
+    color: #706c6d;
+    font-size: 0.26rem;
+    text-align: center;
+    float: left;
+    margin-left: 1.96rem;
+    margin-top: 0.35rem;
+}
+/*修改placeholder颜色*/
+input::-webkit-input-placeholder{
+    color:#c4c4c4;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:#c4c4c4;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:#c4c4c4;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:#c4c4c4;
+}
+.process{
+    margin-left: 0.86rem;
+    margin-top: 0.36rem;
+}
+.pro{
+    margin-top: 0.06rem;
+}
+.pro img{
+    display: block;
+    width: 1.34rem;
+    height: 1.34rem;
+    float: left;
+}
+.pro_wenzi{
+    float: left;
+    margin-left: 0.22rem;
+    margin-top: 0.28rem;
+}
+.pro_wenzi h1{
+    font-size: 0.32rem;
+    color: #513b38;
+    margin: 0;
+    float: left;
+}
+.pro_wenzi img{
+    width: 0.44rem;
+    height: 0.44rem;
+    display: block;
+    float: left;
+    margin-left: 0.07rem;
+}
+.pro_wenzi h2{
+    font-size: 0.28rem;
+    color: #765d5a;
+    margin: 0;
+    font-weight: normal;
+}
+.pro_step{
+    height: 0.46rem;
+    margin-top: 0.08rem;
+}
+.pro_step img{
+    border: 0;
+    display: block;
+    width: 0.1rem;
+    height: 0.46rem;
+    margin-left: 0.62rem;
+    margin-bottom: 0.06rem;
+}
+.logos{
+    width: 100%;
+    height: 1.19rem;
+    margin-top: 0.78rem;
+    border-bottom: 2px dashed #ffdada;
+}
+.logo{
+    width: 2.65rem;
+    height: 0.89rem;
+    background: #f4eaea;
+    /*margin-left: 1.57rem;*/
+    margin: 0 auto;
+    color: #765d5a;
+    font-size: 0.26rem;
+    text-align: center;
+    line-height: 0.89rem;
+}
+.foot{
+    width: 100%;
+    height: 1.06rem;
+    text-align: center;
+    padding-top: 0.4rem;
+    padding-bottom: 0.33rem;
+}
+.foot h1{
+    color: #765d5a;
+    font-size: 0.26rem;
+    font-weight: normal;
+    margin: 0;
+}

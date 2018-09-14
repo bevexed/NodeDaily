@@ -1,0 +1,39 @@
+doctype 
+html
+    head
+    script
+        |a
+        |b
+    script
+        include a.js
+    script.
+        window.onload =function (ev) {  }
+    body
+        div(style=json)
+        div(class=arr)
+            span #{name}
+            a #{a+b}
+            span=a
+            span=b
+        div
+            -var c = 12
+            -var d = 7
+            div a+b=#{c+d}
+        -for(var i = 0; i<arr.length;i++)
+            div=arr[i]
+        div!=content
+            div
+                -var x = 19
+                -if(x%2==0)
+                    div(style={background:'red'})
+                -else
+                    div(style={background:'green'})
+        div
+            -var m = 2
+                case m
+                    when 0
+                        div aaa
+                    when 1
+                        div bbb
+                    default
+                        div ccc

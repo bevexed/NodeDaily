@@ -1,0 +1,57 @@
+* {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.a_hr_center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.a_v_center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.m_center {
+    margin: 0 auto;
+}
+
+/*显示省虑号*/
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*伪类清楚浮动*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+
+}
+
+/*为兼容IE6,IE7，因为ie6,ie7不能用after伪类。加上下面代码*/
+.clearfix {
+    zoom: 1
+}
+
+/*鼠标手*/
+.cursor {
+    cursor: pointer;
+}

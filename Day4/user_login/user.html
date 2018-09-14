@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.3.1.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td><label for="user">姓名</label></td>
+        <td><input type="text" name="user" id="user"></td>
+    </tr>
+    <tr>
+        <td><label for="pass">密码</label></td>
+        <td><input type="password" name="pass" id="pass"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="注册" id="reg"></td>
+        <td><input type="button" value="登录" id="log"></td>
+    </tr>
+</table>
+</body>
+<script>
+    window.onload = () => {
+        let oTxUser = document.querySelector('#user');
+        let oTxPass = document.querySelector('#pass');
+        let oButReg = document.querySelector('#reg');
+        let oButLog = document.querySelector('#log');
+        oButReg.onclick = () => {
+            $.ajax({
+                url: 'localhost：8081/user',
+                data: {act: 'reg', user: oTxUser.value, pass: oTxPass.value},
+                type: 'GET',
+                success: function (str) {
+                    let json = eval('(' + str + ')');
+                    if (json.ok) {
+                        alert('success');
+                    } else {
+                        alert('default');
+                    }
+                },
+                error: function () {
+                    alert('失败')
+                }
+            })
+        }
+    }
+</script>
+</html>

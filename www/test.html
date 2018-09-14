@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div>test <br>
+    <input type="text" id="user"><br>
+    <input type="text" id="pass"><br>
+    <button id="submit">提交</button>
+</div>
+</body>
+<script>
+    window.onload = function () {
+        $('#submit').on('click', function () {
+            console.log($('#user').val(),$('#pass').val())
+            $.ajax({
+                url: '/login',
+                type:'POST',
+                data: {user: $('#user').val(), pass: $('#pass').val()},
+                success: function (str) {
+                    console.log(str)
+                    if (str.ok) {
+                        alert(str.msg)
+                    } else {
+                        alert(str.msg)
+                    }
+                },
+                error: function () {
+                    alert('通信失败')
+                }
+            })
+        })
+    }
+</script>
+</html>

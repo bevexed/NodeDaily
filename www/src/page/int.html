@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>invent_frien</title>
+    <meta name="description" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/invit_friend.css">
+</head>
+
+<body>
+<div id="app">
+    <header>
+        <img src="../img/invit_friend/header.png" alt="">
+    </header>
+    <section class="bar">
+        邀请记录
+    </section>
+    <section class="bonus m_center">
+        <div class="bonus_da pf_r s_r_3 c_f0f0f0">
+            好友注册成功后<span class="c_fde1a5">15天内</span>成功投标，推荐人可获得好友<span
+                style="text-decoration:underline solid rgba(235,218,121,.9)">首次投标金额的2%</span>的奖励（奖励以抵扣卷形式发放）！此外，双方还都将获得<span
+                style="text-decoration:underline solid rgba(235,218,121,.9)">18元抵扣卷</span>一张。
+            <img src="../img/invit_friend/title.png" alt="">
+            <table class="s_r_2" border="1" cellpadding="0" cellspacing="0">
+                <tr style="" class="head s_r_2 pf_r c_423313">
+                    <th></th>
+                    <th>邀请人</th>
+                    <th>被邀请人</th>
+                </tr>
+                <tr class="success">
+                    <td style="background-color: #916e22">注册成功</td>
+                    <td>-</td>
+                    <td>888新人礼包</td>
+                </tr>
+                <tr class="first">
+                    <td style="background-color: #916e22">完成首投</td>
+                    <td style="line-height: .5rem">
+                        18元抵扣卷<br>
+                        +<br>
+                        <span class="c_fde1a5">
+                        首投金额2%抵扣卷
+                    </span>
+                    </td>
+                    <td>
+                        18元抵扣卷
+                    </td>
+                </tr>
+            </table>
+            <p class="s_r_2 c_ef" style="text-align: center; text-indent: 0;letter-spacing: -.01rem;">
+                (注：抵扣卷皆四舍五入至元，是用门槛向上取整百)</p>
+            <p class="s_r_2 c_edc97c" style="text-indent: 0">
+                举个例子： <br>
+                袋鼠君邀请了他的朋友小考拉。小考拉在注册成功后的15天内，完成了在平台的第一笔投资2333元。投资成功后，小考和袋鼠君，都获得了一张18元的抵扣卷（投资金额≥100）元可用。并且，根据计算公式：
+            </p>
+
+            <div class="fx s_r_2 c_edc97c">
+                2333 x 2% = 46.66 元
+            </div>
+            <p class="s_r_2 c_edc97c" style="text-indent: 0">
+                袋鼠君作为邀请小考拉的邀请人，还额外获得了一张面值47元的抵扣券(投金额资≥100元可用)。
+            </p>
+        </div>
+    </section>
+    <section class="strategy m_center">
+        <div class="strategy_da pf_r s_r_3 c_f0f0f0">
+            <ul>
+                <li>
+                    <img class="left" style="width: 1.32rem" src="../img/invit_friend/3.png" alt="">
+                    <p class="right">
+                        "点击下方”当面邀请”按钮邀请好友扫一扫"
+                    </p>
+                </li>
+                <li>
+                    <img class="left" style="width: 1.08rem;" src="../img/invit_friend/2.png" alt="">
+                    <p class="right">
+                        将“链接邀请”分享至朋友圈，或者发送给朋友
+                    </p>
+                </li>
+                <li>
+                    <img class="left" style="width: 1.06rem" src="../img/invit_friend/1.png" alt="">
+                    <p class="right">
+                        "告诉好友我的手机号 提醒对方在注册时填写"
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="invint m_center clearfix">
+        <div class="bonus_da pf_r s_r_3 c_f0f0f0 clearfix">
+            <table class="s_r_2" border="1" cellpadding="0" cellspacing="0">
+                <tr style="" class="head s_r_2 pf_r c_423313">
+                    <th>排名</th>
+                    <th>用户</th>
+                    <th>累计获得奖励</th>
+                </tr>
+                <tr class="success" v-for="i in 5">
+                    <td style="background-color: #916e22">{{i}}</td>
+                    <td>133******54</td>
+                    <td>133元</td>
+                </tr>
+
+            </table>
+            <span class="right s_r_22 c_ef" style="margin-top: .1rem ">(* 以上数据每日更新)</span>
+        </div>
+    </section>
+
+    <footer class="s_r_22 c_808080 pf_r">
+        此活动不与渠道活动共享 <br>
+        以上活动规则最终解释权归****平台所有
+        <div class="buttons clearfix">
+            <div class="button left" style="background: #f2dcad">
+                <img src="../img/invit_friend/er.png" alt="">
+                当面邀请
+            </div>
+            <div class="button right" style="background: #eac578">
+                <img src="../img/invit_friend/lian.png" alt="">
+                当面邀请
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="../js/main.js"></script>
+<script src="../js/common/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {},
+        methods: []
+    })
+</script>
+</body>
+
+</html>
