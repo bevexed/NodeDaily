@@ -2,7 +2,7 @@
   "name": "day5",
   "version": "1.0.0",
   "description": "",
-  "main": "Day5/express_server.js",
+  "main": "old/Day5/express_server.js",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",

@@ -1,0 +1,56 @@
+# Node
+* Node.js 不是一门语言
+* Node.js 不是库、不是框架
+* Node.js® 是一个基于 Chrome V8 引擎 的 JavaScript 运行时。
+  * Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+* Node.js 这个 JavaScript 执行环境 提供了 一些 服务器 级别的 API
+  * 文件读写
+  * 网络服务的构建
+  * 网络通信
+  * http 服务器
+* Node.js use an event-driven,non-blocking I/O modal that makes it lightweight and efficient.
+  * event-driven ：事件驱动
+  * non-blocking I/O ： 非阻塞模型（异步）
+  * lightweight and efficient
+* 思想
+  * B/S 编程模型
+    * Browser - Server
+    * back - end
+  * 模块化编程
+    * RequireJS
+    * SeaJS
+    * @import()
+  * 异步编程
+    * 回调函数
+* 文件名不可以使用 node.js
+## File System
+> 文件操作,
+* fs模块读取文件的相对路径是以启动server.js的位置为基准的，而不是以server.js文件的位置。
+* readFile(file，callback(err,data))
+  ```js
+    // 1. 引入 fs 模块
+    const fs = require('fs');
+
+    /* 2. 读取文件
+     *  第一个参数 => 要读取的文件
+     *  第二个参数 => 回调函数 => err,data
+     */
+    fs.readFile('./README.md', (err, data) => {
+      console.log(`data:${data}, err:${err}`);
+    })
+  ```
+* writeFile(file, text , callback(err))
+  ```js
+    const fs = require('fs')
+
+    // 第一个参数 => 文件路径
+    // 第二个参数 => 要写入的文件内容
+    // 第三个参数 => 回调函数 => err
+    // 没有文件 => 创建新文件
+
+    fs.writeFile('./File System/demo.text','12345',(err)=>{
+      console.log(err);
+    })
+  ```
+
+
