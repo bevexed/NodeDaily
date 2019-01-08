@@ -59,7 +59,7 @@
       * request.url : 请求路径
       * response.write : 可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
       * response.end() : 将 数据 呈递给客户
-  ```
+  ```js
     // 1. 引入 http
     const http = require('http');
 
