@@ -23,7 +23,9 @@
   * 异步编程
     * 回调函数
 * 文件名不可以使用 node.js
-## File System
+
+## 核心模块
+### File System
 > 文件操作,
 * fs模块读取文件的相对路径是以启动server.js的位置为基准的，而不是以server.js文件的位置。
 * readFile(file，callback(err,data))
@@ -52,12 +54,14 @@
       console.log(err);
     })
   ```
-## HTTP
+#### HTTP
 * http.createServer()
   * 返回 一个 Server 对象
     * server.on('request', (req, res) => {})
       * request.url : 请求路径
-      * response.write : 可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
+      * response.write
+        * 可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
+        * 只能传递 二进制类型数据 或 字符串
       * response.end() : 将 数据 呈递给客户
   ```js
     // 1. 引入 http
@@ -70,14 +74,6 @@
     /* 3. 服务器监听事件
      *  第一个参数 => 事件名(地址)
      *  第二个参数 => callback => request response
-     *  request
-     *    request.url 请求路径
-     *  response
-     *    response.write
-     *    可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
-     *    response.end()
-     *    将 数据 呈递给客户
-     *
     */
     server.on('request', (req, res) => {
       console.log(req.url);
@@ -90,5 +86,17 @@
       console.log('服务器已启动');
     });
   ```
+
+## 模块化
+### require
+* 用来加载模块并执行文件
+  * 具名核心模块 ：
+    * fs、http ， 直接引用
+  * 自定义模块 ：
+    * 写相对路径 ./ 不能省略
+    * 可以直接引用 JS 文件
+    * 可以省略后缀名
+
+* 拿到加载文件中的导出对象
 
 
