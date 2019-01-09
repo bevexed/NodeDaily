@@ -54,13 +54,17 @@
       console.log(err);
     })
   ```
+* readdir(path, [option], callback)
 #### HTTP
 * http.createServer()
   * 返回 一个 Server 对象
     * server.on('request', (req, res) => {})
       * request.url : 请求路径
-      * res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+      * res.setHeader()
         * 设置响应头
+          * Content-Type
+            * text/plain : 普通文本
+            * text/html  : html 格式
       * response.write
         * 可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
         * 只能传递 二进制类型数据 或 字符串
@@ -113,7 +117,6 @@
 * 端口号范围 0 - 65536
 * 最好不要使用一些 知名 的端口号
 * 可以同时开启多个端口号
-*
 
 #### IP 地址
 > 用来定位计算机
