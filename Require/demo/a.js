@@ -1,2 +1,2 @@
 console.log('a')
-require('./b')
+require('./b.js')
