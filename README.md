@@ -65,6 +65,12 @@
           * Content-Type
             * text/plain : 普通文本
             * text/html  : html 格式
+        * 临时重定向
+          * Location
+          ```
+            res.statusCode = 302
+            res.setHeader('Location', 'url')
+          ```
       * response.write
         * 可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
         * 只能传递 二进制类型数据 或 字符串
@@ -92,6 +98,9 @@
       console.log('服务器已启动');
     });
   ```
+### URL
+> 获取 url 中的 query 等参数
+* url.parse(req.url,true)
 
 ## 模块化
 ### require
