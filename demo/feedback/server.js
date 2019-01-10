@@ -13,12 +13,19 @@ http
     let query = parseObj.query;
     let pathname = parseObj.pathname;
 
+    if (pathname.indexOf('message') > 0) {
+      feedBacks.push({name: query.name, message: query.message});
+      res.statusCode = 302;
+      res.setHeader('Location', './index.html')
+      res.end()
+    }
+
     if (req.url) {
       fs.readFile(path.join(__dirname, pathname), (err, data) => {
         if (err) {
           return res.end('404 Not Found')
         }
-        feedBacks.push({name: query.name, message: query.message});
+
         let HtmlStr = art.render(data.toString(), {feedBacks});
         res.end(HtmlStr)
       })
