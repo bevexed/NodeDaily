@@ -6,7 +6,6 @@ const url = require('url');
 
 const feedBacks = [{name: 1, message: "123"}, {name: 2, message: "456"}];
 
-message = undefined;
 http
   .createServer((req, res) => {
     let parseObj = url.parse(req.url, true);
@@ -16,7 +15,7 @@ http
     if (pathname.indexOf('message') > 0) {
       feedBacks.push({name: query.name, message: query.message});
       res.statusCode = 302;
-      res.setHeader('Location', './index.html')
+      res.setHeader('Location', './index.html');
       res.end()
     }
 

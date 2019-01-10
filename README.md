@@ -28,6 +28,7 @@
 ### File System
 > 文件操作
 * fs模块读取文件的相对路径是以启动server.js的位置为基准的，而不是以server.js文件的位置。
+
 * readFile(file，callback(err,data))
   ```js
     // 1. 引入 fs 模块
@@ -41,6 +42,7 @@
       console.log(`data:${data}, err:${err}`);
     })
   ```
+
 * writeFile(file, text , callback(err))
   ```js
     const fs = require('fs')
@@ -54,8 +56,10 @@
       console.log(err);
     })
   ```
+
 * readdir(path, [option], callback)
-#### HTTP
+
+### HTTP
 * http.createServer()
   * 返回 一个 Server 对象
     * server.on('request', (req, res) => {})
@@ -65,10 +69,11 @@
           * Content-Type
             * text/plain : 普通文本
             * text/html  : html 格式
-        * 临时重定向
+        * 重定向
           * Location
-          ```
-            res.statusCode = 302
+            * form 表单提交的 猫腻
+          ```ja
+            res.statusCode = 302 // 临时重定向
             res.setHeader('Location', 'url')
           ```
       * response.write
@@ -102,17 +107,31 @@
 > 获取 url 中的 query 等参数
 * url.parse(req.url,true)
 
-## 模块化
-### require
-* 用来加载模块并执行文件
-  * 具名核心模块 ：
-    * fs、http ， 直接引用
-  * 自定义模块 ：
-    * 写相对路径 ./ 不能省略
-    * 可以直接引用 JS 文件
-    * 可以省略后缀名
-* 拿到加载文件中的导出对象
+### OS
+> 操作系统信息
 
+
+## 模块化
+> 同时具有 文件作用域 通信规则
+
+### require
+> 用来加载模块并执行文件
+* 具名核心模块 ：
+  * fs、http ， 直接引用
+* 自定义模块 ：
+  * 写相对路径 ./ 不能省略
+  * 可以直接引用 JS 文件
+  * 可以省略后缀名
+* 拿到加载文件中的导出对象
+* exports
+  * 对象，可以添加多个成员
+
+### exports
+> 导出对象
+* exports.xxx
+  * 挂载的方式导出
+* module.export
+  * 直接导出模块中的成员
 > import 可以用于 浏览器 模式
 
 ## IP 地址 和 端口号
