@@ -13,8 +13,10 @@ app.set('views',path.join(__dirname, './views'));
 app.use(express.static(path.join(__dirname, './')));
 
 app.get('/', (req, res) => {
-  res.render('404.html')
+  res.render('index.html')
 });
+
+app.post('message.html',)
 
 // 3，监听
 app.listen(3000, function () {

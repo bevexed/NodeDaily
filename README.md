@@ -80,7 +80,7 @@
       * 可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
       * 只能传递 二进制类型数据 或 字符串
     * response.end() : 将 数据 呈递给客户
-  ```js
+    ```js
     // 1. 引入 http
     const http = require('http');
 
@@ -139,20 +139,20 @@
 ### exports
 > 导出对象
 #### exports
-  * 挂载的方式导出
-  * exports.xxx = xxx 等价于 module.exports.xxx = xxx
-  * 不可以直接给 exports 重新赋值
-    * Node 中的每一个模块 都有 let exports = module.exports
-    * 重新赋值后，改变了 exports 的引用，exports 不在 指向 module.exports
-    * 在文件的 底部默认 有 return module.exports, 所以 依旧可以使用 module.exports.xxx = xxx 来继续导出值
+* 挂载的方式导出
+* exports.xxx = xxx 等价于 module.exports.xxx = xxx
+* 不可以直接给 exports 重新赋值
+  * Node 中的每一个模块 都有 let exports = module.exports
+  * 重新赋值后，改变了 exports 的引用，exports 不在 指向 module.exports
+  * 在文件的 底部默认 有 return module.exports, 所以 依旧可以使用 module.exports.xxx = xxx 来继续导出值
   ```js
-    exports.a = 1
-    exports.b = () => {}
-    exports.c = '123'
+  exports.a = 1
+  exports.b = () => {}
+  exports.c = '123'
   ```
 #### module.exports
-  * 直接导出模块中的成员
-  * 后者覆盖前者
+* 直接导出模块中的成员
+* 后者覆盖前者
 
 > import 可以用于 浏览器 模式
 
@@ -160,92 +160,132 @@
 > node package manager
 * [npm网站](www.npmjs.com)
 #### 命令行工具
-  * npm init -y
-  * npm install
-    * 简写 npm i
-    * npm install —S 包名
-    * npm install —D 包名
-  * npm uninstall
-    * 简写 npm un
-  * npm config set registry 地址
-    * 修改镜像源
-    * npm config set registry https://registry.npm.taobao.org
-  * npm config list
-    * 查看配置
+* npm init -y
+* npm install
+  * 简写 npm i
+  * npm install —S 包名
+  * npm install —D 包名
+* npm uninstall
+  * 简写 npm un
+* npm config set registry 地址
+  * 修改镜像源
+    ```bash
+    npm config set registry https://registry.npm.taobao.org
+    ```
+* npm config list
+  * 查看配置
 #### package.json
-  * 通过 npm init 来创建
-    * npm init -y 快输创建
-  * dependencies
-    > 依赖项
+* 通过 npm init 来创建
+  * npm init -y 快输创建
+* dependencies
+  > 依赖项
 
 ## Express
 > 对原生 http 模块再次封装
 ### 安装
-  ```bash
-  npm i express -S
-  ```
+```bash
+npm i express -S
+```
 ### 初始化
-  ```js
-  // 1. 引入 express
-  const express = require('express');
+```js
+// 1. 引入 express
+const express = require('express');
 
-  // 2. 创建 服务器
-  const app = express();
+// 2. 创建 服务器
+const app = express();
 
-  app.get('/', function (req, res) {
-    res.send('123')
-  });
+app.get('/', function (req, res) {
+  res.send('123')
+});
 
-  // 3，监听
-  app.listen(3000, function () {
-    console.log('running');
-  });
-  ```
+// 3，监听
+app.listen(3000, function () {
+  console.log('running');
+});
+```
 ### 路由
-  * app.use(path, fn)
-    * 参数1 : 路径的别名
-    * 参数2 ：express.static(真实路径)
-  ```js
-  // 1. 访问时需要带 '/public'
-  app.use('/public/',express.static('./public'))
-  // 2. 访问时 不需要 '/public'
-  app.use(express.static('./public'))
-  ```
+* app.use(path, fn)
+  * 参数1 : 路径的别名
+  * 参数2 ：express.static(真实路径)
+```js
+// 1. 访问时需要带 '/public'
+app.use('/public/',express.static('./public'))
+// 2. 访问时 不需要 '/public'
+app.use(express.static('./public'))
+```
 ### query
+> express 将 query 封装到了 res.query 中
+* query 只能获取 get 请求的数据
+```js
+const query = req.query
+```
+### 重定向
+```js
+res.redirect(url)
+```
 
-### 配置 [art-template](http://aui.github.io/art-template/zh-cn/)
+### 获取 POST 请求体
+#### 安装 [body-parser](https://www.npmjs.com/package/body-parser)
+```bash
+npm i body-parser -S
+```
+#### 配置
+* 加入这个配置后，可以直接在 res.body 中直接获取 请求体数据
+```js
+const express = require('express')
+const bodyParser = require('body-parser')
+ 
+const app = express()
+ 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
+ 
+app.use(function (req, res) {
+  res.setHeader('Content-Type', 'text/plain')
+  res.write('you posted:\n')
+  res.end(JSON.stringify(req.body, null, 2))
+})
+```
+
+
+### 配置模板 [art-template](http://aui.github.io/art-template/zh-cn/)
 #### 安装
-  ```bash
-  npm install --save art-template
-  npm install --save express-art-template
-  ```
+```bash
+npm install --save art-template
+npm install --save express-art-template
+```
 #### 应用
-  ```js
-  const express = require('express');
-  const app = express();
-  app.engine('art', require('express-art-template'));
-  // 设置模板路径
-  app.set(views, {
-      debug: process.env.NODE_ENV !== 'production'
-  });
-  
-  app.get('/', function (req, res) {
-      res.render('index.art', {
-          user: {
-              name: 'aui',
-              tags: ['art', 'template', 'nodejs']
-          }
-      });
-  });
-  ``` 
+```js
+const express = require('express');
+const app = express();
+app.engine('art', require('express-art-template'));
+// 设置模板路径
+app.set(views, {
+    debug: process.env.NODE_ENV !== 'production'
+});
+
+app.get('/', function (req, res) {
+    res.render('index.art', {
+        user: {
+            name: 'aui',
+            tags: ['art', 'template', 'nodejs']
+        }
+    });
+});
+``` 
 #### render
-  * express 默认为 Response 对象提供了 Render 方法，但是需要配置模板引擎才可以使用
-    ```js
-    res.render(`html模板名`, `模板数据`)
-    ```
-
-
-
+* express 默认为 Response 对象提供了 Render 方法，但是需要配置模板引擎才可以使用
+```js
+res.render(`html模板名`, `模板数据`)
+```
+### 修改模板默认文件夹
+* app.use
+  ```js
+  app.use('views','你的路径')
+  ```
 
 ## IP 地址 和 端口号
 * 域名 => DNS => ip地址 => 服务器 => 端口号 => 应用程序
@@ -271,7 +311,7 @@
 ## 第三方工具
 ### nodemon
 > 自动监视服务器文件，当服务器文件发生变化时，自动重启服务器
-* 安装
+#### 安装
   ```bash
   npm i nodemon -g
   ```
