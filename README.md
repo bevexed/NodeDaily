@@ -113,6 +113,10 @@
 
 ## 模块化
 > 同时具有 文件作用域 通信规则
+* 在 Node 中每个模块内部都有一个自己的 module 对象
+* 在 module 中有一个 exports 对象
+* 在文件的 底部默认 有 return module.exports
+* 为了简化 操作，Node 中的每一个模块 都有 let exports = module.exports
 
 ### require
 > 用来加载模块并执行文件
@@ -128,10 +132,22 @@
 
 ### exports
 > 导出对象
-* exports.xxx
+* exports
   * 挂载的方式导出
-* module.export
+  * exports.xxx = xxx 等价于 module.exports.xxx = xxx
+  * 不可以直接给 exports 重新赋值
+    * Node 中的每一个模块 都有 let exports = module.exports
+    * 重新赋值后，改变了 exports 的引用，exports 不在 指向 module.exports
+    * 在文件的 底部默认 有 return module.exports, 所以 依旧可以使用 module.exports.xxx = xxx 来继续导出值
+  ```js
+    exports.a = 1
+    exports.b = () => {}
+    exports.c = '123'
+  ```
+* module.exports
   * 直接导出模块中的成员
+  * 后者覆盖前者
+
 > import 可以用于 浏览器 模式
 
 ## IP 地址 和 端口号
