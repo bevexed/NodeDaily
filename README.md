@@ -178,8 +178,12 @@
   * dependencies
     > 依赖项
 
-## express
+## Express
 > 对原生 http 模块再次封装
+* 安装
+  ```bash
+  npm i express -S
+  ```
 * init
   ```js
   // 1. 引入 express
@@ -201,6 +205,7 @@
   ```js
     app.use('/public',express.static('./public'))
   ```
+* query
 
 
 ## IP 地址 和 端口号
@@ -209,17 +214,26 @@
 * 计算机中只有一个物理网卡，并且在一个局域网中，网卡的地址必须是唯一的
 * 网卡是通过唯一的 IP 来进行定位的
 
-#### 端口号
+### 端口号
 > 用来定位具体的应用程序
 * 端口号范围 0 - 65536
 * 最好不要使用一些 知名 的端口号
 * 可以同时开启多个端口号
 
-#### IP 地址
+### IP 地址
 > 用来定位计算机
 
-#### 服务器
+### 服务器
 > 一台 24小时 不关机的电脑
 * 默认发送 utf-8 编码的内容
 * 中文操作系统 默认 gdk
 * res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+
+## 第三方工具
+### nodemon
+> 自动监视服务器文件，当服务器文件发生变化时，自动重启服务器
+* 安装
+  ```bash
+  npm i nodemon -g
+  ```
+
