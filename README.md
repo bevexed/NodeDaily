@@ -120,15 +120,21 @@
 
 ### require
 > 用来加载模块并执行文件
-* 具名核心模块 ：
-  * fs、http ， 直接引用
-* 自定义模块 ：
-  * 写相对路径 ./ 不能省略
-  * 可以直接引用 JS 文件
-  * 可以省略后缀名
-* 拿到加载文件中的导出对象
-* exports
-  * 对象，可以添加多个成员
+* 路径标识符
+  * 具名核心模块 ：
+    * fs、http ， 直接引用
+  * 第三方模块 ：
+    * 先找当前文件所属目录中的 node_module 中的 目录
+    * 再去找 package.json 文件中的 main 属性
+      * main 中记录了 第三方模块的 入口
+    * 如果 不存在 package.json,会默认加载 index.js
+    * 如果 index.js 找不到，则跳至 上一级目录 中继续查找
+  * 自定义模块 ：
+    * 写相对路径 ./ 不能省略
+    * 可以直接引用 JS 文件
+    * 可以省略后缀名
+* 拿到加载文件中的导出对象 module.exports
+* 优先从 缓存 加载，避免重复加载，提高代码加载效率
 
 ### exports
 > 导出对象
@@ -149,6 +155,53 @@
   * 后者覆盖前者
 
 > import 可以用于 浏览器 模式
+
+### npm
+> node package manager
+* [npm网站](www.npmjs.com)
+* 命令行工具
+  * npm init -y
+  * npm install
+    * 简写 npm i
+    * npm install —S 包名
+    * npm install —D 包名
+  * npm uninstall
+    * 简写 npm un
+  * npm config set registry 地址
+    * 修改镜像源
+    * npm config set registry https://registry.npm.taobao.org
+  * npm config list
+    * 查看配置
+* package.json
+  * 通过 npm init 来创建
+    * npm init -y 快输创建
+  * dependencies
+    > 依赖项
+
+## express
+> 对原生 http 模块再次封装
+* init
+  ```js
+  // 1. 引入 express
+  const express = require('express');
+
+  // 2. 创建 服务器
+  const app = express();
+
+  app.get('/', function (req, res) {
+    res.send('123')
+  });
+
+  // 3，监听
+  app.listen(3000, function () {
+    console.log('running');
+  });
+  ```
+* 公开指定目录
+  ```js
+    app.use('/public',express.static('./public'))
+  ```
+
 
 ## IP 地址 和 端口号
 * 域名 => DNS => ip地址 => 服务器 => 端口号 => 应用程序
