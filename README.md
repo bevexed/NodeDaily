@@ -3,7 +3,7 @@
 * Node.js 不是库、不是框架
 * Node.js® 是一个基于 Chrome V8 引擎 的 JavaScript 运行时。
   * Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-* Node.js 这个 JavaScript 执行环境 提供了 一些 服务器 级别的 API
+ Node.js 这个 JavaScript 执行环境 提供了 一些 服务器 级别的 API
   * 文件读写
   * 网络服务的构建
   * 网络通信
@@ -29,11 +29,11 @@
 > 文件操作
 * fs模块读取文件的相对路径是以启动server.js的位置为基准的，而不是以server.js文件的位置。
 
-* readFile(file，callback(err,data))
+#### readFile
+> writeFile(file, callback(err))
   ```js
     // 1. 引入 fs 模块
     const fs = require('fs');
-
     /* 2. 读取文件
      *  第一个参数 => 要读取的文件
      *  第二个参数 => 回调函数 => err,data
@@ -43,43 +43,43 @@
     })
   ```
 
-* writeFile(file, text , callback(err))
+#### writeFile
+> writeFile(file, text , callback(err))
   ```js
     const fs = require('fs')
-
     // 第一个参数 => 文件路径
     // 第二个参数 => 要写入的文件内容
     // 第三个参数 => 回调函数 => err
     // 没有文件 => 创建新文件
-
     fs.writeFile('./File System/demo.text','12345',(err)=>{
       console.log(err);
     })
   ```
 
-* readdir(path, [option], callback)
+#### readdir
+> readdir(path, [option], callback)
 
 ### HTTP
-* http.createServer()
-  * 返回 一个 Server 对象
-    * server.on('request', (req, res) => {})
-      * request.url : 请求路径
-      * res.setHeader()
-        * 设置响应头
-          * Content-Type
-            * text/plain : 普通文本
-            * text/html  : html 格式
-        * 重定向
-          * Location
-            * form 表单提交的 猫腻
-          ```ja
-            res.statusCode = 302 // 临时重定向
-            res.setHeader('Location', 'url')
-          ```
-      * response.write
-        * 可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
-        * 只能传递 二进制类型数据 或 字符串
-      * response.end() : 将 数据 呈递给客户
+#### http.createServer()
+* 返回 一个 Server 对象
+  * server.on('request', (req, res) => {})
+    * request.url : 请求路径
+    * res.setHeader()
+      * 设置响应头
+        * Content-Type
+          * text/plain : 普通文本
+          * text/html  : html 格式
+      * 重定向
+        * Location
+          * form 表单提交的 猫腻
+        ```js
+          res.statusCode = 302 // 临时重定向
+          res.setHeader('Location', 'url')
+        ```
+    * response.write
+      * 可以使用多次，但是最后一定 end 来结束 响应，否则 客户端 会一直等待
+      * 只能传递 二进制类型数据 或 字符串
+    * response.end() : 将 数据 呈递给客户
   ```js
     // 1. 引入 http
     const http = require('http');
@@ -138,7 +138,7 @@
 
 ### exports
 > 导出对象
-* exports
+#### exports
   * 挂载的方式导出
   * exports.xxx = xxx 等价于 module.exports.xxx = xxx
   * 不可以直接给 exports 重新赋值
@@ -150,7 +150,7 @@
     exports.b = () => {}
     exports.c = '123'
   ```
-* module.exports
+#### module.exports
   * 直接导出模块中的成员
   * 后者覆盖前者
 
@@ -159,7 +159,7 @@
 ### npm
 > node package manager
 * [npm网站](www.npmjs.com)
-* 命令行工具
+#### 命令行工具
   * npm init -y
   * npm install
     * 简写 npm i
@@ -172,7 +172,7 @@
     * npm config set registry https://registry.npm.taobao.org
   * npm config list
     * 查看配置
-* package.json
+#### package.json
   * 通过 npm init 来创建
     * npm init -y 快输创建
   * dependencies
@@ -180,11 +180,11 @@
 
 ## Express
 > 对原生 http 模块再次封装
-* 安装
+### 安装
   ```bash
   npm i express -S
   ```
-* init
+### 初始化
   ```js
   // 1. 引入 express
   const express = require('express');
@@ -201,11 +201,50 @@
     console.log('running');
   });
   ```
-* 公开指定目录
+### 路由
+  * app.use(path, fn)
+    * 参数1 : 路径的别名
+    * 参数2 ：express.static(真实路径)
   ```js
-    app.use('/public',express.static('./public'))
+  // 1. 访问时需要带 '/public'
+  app.use('/public/',express.static('./public'))
+  // 2. 访问时 不需要 '/public'
+  app.use(express.static('./public'))
   ```
-* query
+### query
+
+### 配置 [art-template](http://aui.github.io/art-template/zh-cn/)
+#### 安装
+  ```bash
+  npm install --save art-template
+  npm install --save express-art-template
+  ```
+#### 应用
+  ```js
+  const express = require('express');
+  const app = express();
+  app.engine('art', require('express-art-template'));
+  // 设置模板路径
+  app.set(views, {
+      debug: process.env.NODE_ENV !== 'production'
+  });
+  
+  app.get('/', function (req, res) {
+      res.render('index.art', {
+          user: {
+              name: 'aui',
+              tags: ['art', 'template', 'nodejs']
+          }
+      });
+  });
+  ``` 
+#### render
+  * express 默认为 Response 对象提供了 Render 方法，但是需要配置模板引擎才可以使用
+    ```js
+    res.render(`html模板名`, `模板数据`)
+    ```
+
+
 
 
 ## IP 地址 和 端口号
