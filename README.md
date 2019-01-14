@@ -204,6 +204,19 @@ app.listen(3000, function () {
 });
 ```
 ### 路由
+#### 引入 Router
+```js
+// router.js
+const express = require('express')
+const router = express.Router()
+```
+
+#### 把路由容器挂载在 app上
+```js
+// app.js
+app.use(router)
+```
+#### 静态文件处理
 * app.use(path, fn)
   * 参数1 : 路径的别名
   * 参数2 ：express.static(真实路径)

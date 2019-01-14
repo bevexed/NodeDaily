@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 // parse application/json
 app.use(bodyParser.json());
 
-router(app)
+app.use(router)
 // 引入 art-tempalte
 app.engine('html', require('express-art-template'));
 app.set('views', path.join(__dirname, './views'));
