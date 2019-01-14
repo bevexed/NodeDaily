@@ -10,7 +10,6 @@ const app = express();
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
 // parse application/json
-app.use(bodyParser.json());
 
 app.use(router)
 // 引入 art-tempalte
@@ -22,6 +21,6 @@ app.set('views', path.join(__dirname, './views'));
 // 读取静态资源
 app.use(express.static(path.join(__dirname, './')));
 
-app.listen(3001, function () {
+app.listen(3002, function () {
   console.log('running')
 });
