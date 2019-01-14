@@ -84,8 +84,7 @@
       <div class="table-responsive">
 
         <a type="button" href="add.html" class="btn btn-success">添加</a>
-        <button type="button" class="btn btn-danger">删除</button>
-        <button type="button" class="btn btn-warning">修改</button>
+
         <button type="button" class="btn btn-info">查找</button>
 
         <table class="table table-striped">
@@ -96,6 +95,7 @@
             <th>date</th>
             <th>price</th>
             <th>amount</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -106,6 +106,10 @@
             <td>{{ $value.date }}</td>
             <td>{{ $value.price }}</td>
             <td>{{ $value.amount}}</td>
+            <td>
+              <a type="button" href="edit.html?id={{ $value.id }}" class="btn btn-warning">修改</a>
+              <a type="button" href="delete.html?id={{ $value.id }}" class="btn btn-danger">删除</a>
+            </td>
           </tr>
           {{ /each }}
           </tbody>

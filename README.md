@@ -329,12 +329,24 @@ res.render(`html模板名`, `模板数据`)
 ### nodemon
 > 自动监视服务器文件，当服务器文件发生变化时，自动重启服务器
 #### 安装
-  ```bash
-  npm i nodemon -g
-  ```
+```bash
+npm i nodemon -g
+```
+  
+## MongoDB
   
 ## 封装异步 API
 > 如果需要获取一个函数中异步操作的结果，则必须通过回调函数的方式来获取
 ### 回调函数
 > 获取异步操作的结果
+```js
+let add = callback => {
+  setTimeout( callback,1000)
+}
+add((x = 1, y = 2) => {
+ return x + y
+})
+```
+### JavaScript 事件循环
+
 

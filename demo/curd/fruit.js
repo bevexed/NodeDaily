@@ -42,6 +42,31 @@ exports.add = (add, callback) => {
 };
 
 // 删
+/*
+* @param {Number} id
+* @param {Function} callback
+* */
+
+exports.delete = (id, callback) => {
+  fs.readFile(dbPath, 'utf-8', (err, data) => {
+    if (err) {
+      return callback(err)
+    }
+    id = parseInt(id);
+    data = JSON.parse(data);
+    data.type.map((item, index) => {
+      if (item.id === id) {
+        data.type.splice(index, 1)
+      }
+    });
+    fs.writeFile(dbPath, JSON.stringify(data), err => {
+      if (err) {
+        return err
+      }
+      callback(null)
+    })
+  })
+};
 
 // 改
 exports.update = (fruit, callback) => {
@@ -50,6 +75,7 @@ exports.update = (fruit, callback) => {
       return callback(err)
     }
     data = JSON.parse(data);
+    fruit.id = parseInt(fruit.id);
     let newFruit = data.type.find(item => item.id === fruit.id);
     for (let [key, value] of Object.entries(fruit)) {
       newFruit[key] = value
@@ -65,3 +91,18 @@ exports.update = (fruit, callback) => {
 };
 
 // 查
+/* 查一个
+ * @param {Number} id 水果ID
+ * @param {Function} callBcak
+ */
+exports.findOneById = (id, callback) => {
+  fs.readFile(dbPath, 'utf-8', (err, data) => {
+    if (err) {
+      return callback(err)
+    }
+    data = JSON.parse(data);
+    let result = data.type.find(item => item.id === id);
+    console.log(result);
+    callback(null, null, result)
+  })
+};
