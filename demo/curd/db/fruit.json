@@ -1,0 +1,21 @@
+{
+  "title": "fruits",
+  "fruits": [
+    {
+      "name": "apple",
+      "src": "/public/imgs/apple.jpeg"
+    },
+    {
+      "name": "banana",
+      "src": "/public/imgs/banana.jpeg"
+    },
+    {
+      "name": "orange",
+      "src": "/public/imgs/orange.jpeg"
+    },
+    {
+      "name": "pear",
+      "src": "/public/imgs/pear.jpeg"
+    }
+  ]
+}

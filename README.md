@@ -257,6 +257,7 @@ app.use(function (req, res) {
 npm install --save art-template
 npm install --save express-art-template
 ```
+
 #### 应用
 ```js
 const express = require('express');
@@ -276,11 +277,14 @@ app.get('/', function (req, res) {
     });
 });
 ``` 
+
 #### render
 * express 默认为 Response 对象提供了 Render 方法，但是需要配置模板引擎才可以使用
 ```js
 res.render(`html模板名`, `模板数据`)
 ```
+
+
 ### 修改模板默认文件夹
 * app.use
   ```js
