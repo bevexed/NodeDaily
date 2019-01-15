@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const fs = require('fs')
-const router = require('./router/index')
+const fs = require('fs');
+const router = require('./router/index');
 
 const app = express();
 
@@ -11,11 +11,10 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 // parse application/json
 
-app.use(router)
+app.use(router);
 // 引入 art-tempalte
 app.engine('html', require('express-art-template'));
 app.set('views', path.join(__dirname, './views'));
-
 
 
 // 读取静态资源

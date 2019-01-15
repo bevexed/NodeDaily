@@ -178,7 +178,17 @@
 * 通过 npm init 来创建
   * npm init -y 快输创建
 * dependencies
-  > 依赖项
+> 依赖项
+* npm 5 以后 不需要 --save 也会自动加入 dependencies 中
+#### package-lock.json
+> npm 5 之后才会存在
+* 每次安装包 都会 都会更新 package-lock.json 文件
+  - 存储 所有包的 下载地址 （依赖信息）
+  - 加快下载速度
+* lock
+  - 如果 重新 install 会下载最新版本
+  - 锁定版本，防止自动升级
+  
 
 ## Express
 > 对原生 http 模块再次封装
@@ -346,6 +356,24 @@ let add = callback => {
 add((x = 1, y = 2) => {
  return x + y
 })
+```
+### 已知异步 API
+- setTimeOut
+- readFile
+- writeFile
+- ajax
+### 封装异步 ajax
+```js
+ajax = (url,callback) => {
+  let xml = new XMLHttpRequest();
+  xml.onreadystatechange = () => {
+    if (xml.readyState === 4) {
+      callback(xml.response)
+    }
+  };
+  xml.open('get', url, true);
+  xml.send(null);
+};
 ```
 ### JavaScript 事件循环
 
