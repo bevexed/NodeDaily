@@ -343,7 +343,71 @@ res.render(`html模板名`, `模板数据`)
 npm i nodemon -g
 ```
   
-## MongoDB
+## MongoDB [中文网](http://www.mongodb.org.cn/)
+> 长的最像关系型数据库的非关系型数据库
+* 数据库 => 数据库
+* 数据表 => 集合（数组）
+* 表记录 => 文档对象
+* MongDB 不需要设置表结构
+### 关系型数据库
+* 通过 sql 语句来操作
+* 在操作之前需要实现表结构
+* 数据表支持约束行为
+  - 唯一的
+  - 主键
+  - 默认值
+  - 非空
+### 非关系型数据库
+* 数据库非常灵活
+* 有的数据库就是 key-value 对
+
+### 安装
+> 文章引自 [mac环境mongodb安装与配置](https://blog.csdn.net/fabulous1111/article/details/80102017)
+#### mac
+* 起步
+```bash
+brew install mongodb
+``` 
+* 创建配置目录： 
+* 挑一个顺眼的位置，创建一个目录，比如叫mongodata，用来放置mongo启动需要的三样东西：
+    * 数据文件 db
+    * 日志文件 logs
+    * 配置文件 etc
+* 启动
+  * 命令行方式启动 
+  ```bash
+  mongod --dbpath=/你的路径/mongodata/db/ --logpath=/你的路径/mongodata/logs/mongodb.log
+  ```
+  * 配置文件方式启动 
+  在 etc 目录下 新建 mongo.conf
+  ```bash
+  #数据库路径
+  dbpath=/Users/thatway/mongodata/db/
+  
+  #日志输出文件路径
+  logpath=/Users/thatway/mongodata/logs/mongodb.log
+  
+  #错误日志采用追加模式，配置这个选项后mongodb的日志会追加到现有的日志文件，而不是从新创建一个新文件
+  logappend=true
+  
+  #启用日志文件，默认启用
+  journal=true
+  
+  #这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false
+  quiet=false
+  
+  #是否后台启动，有这个参数，就可以实现后台运行
+  fork=true
+  
+  #端口号 默认为27017
+  port=27017
+  
+  #指定存储引擎（默认不需要指定）
+  #storageEngine=mmapv1
+  
+  #开启网页日志监控，有这个参数就可以在浏览器上用28017查看监控界面
+  httpinterface=true
+  ```
   
 ## 封装异步 API
 > 如果需要获取一个函数中异步操作的结果，则必须通过回调函数的方式来获取
