@@ -362,53 +362,124 @@ npm i nodemon -g
 * 有的数据库就是 key-value 对
 
 ### 安装
-> 文章引自 [mac环境mongodb安装与配置](https://blog.csdn.net/fabulous1111/article/details/80102017)
-#### mac
-* 起步
+> [mac环境mongodb安装与配置](http://www.mongodb.org.cn/)
+### 启动
 ```bash
-brew install mongodb
-``` 
-* 创建配置目录： 
-* 挑一个顺眼的位置，创建一个目录，比如叫mongodata，用来放置mongo启动需要的三样东西：
-    * 数据文件 db
-    * 日志文件 logs
-    * 配置文件 etc
-* 启动
-  * 命令行方式启动 
-  ```bash
-  mongod --dbpath=/你的路径/mongodata/db/ --logpath=/你的路径/mongodata/logs/mongodb.log
-  ```
-  * 配置文件方式启动 
-  在 etc 目录下 新建 mongo.conf
-  ```bash
-  #数据库路径
-  dbpath=/Users/thatway/mongodata/db/
-  
-  #日志输出文件路径
-  logpath=/Users/thatway/mongodata/logs/mongodb.log
-  
-  #错误日志采用追加模式，配置这个选项后mongodb的日志会追加到现有的日志文件，而不是从新创建一个新文件
-  logappend=true
-  
-  #启用日志文件，默认启用
-  journal=true
-  
-  #这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false
-  quiet=false
-  
-  #是否后台启动，有这个参数，就可以实现后台运行
-  fork=true
-  
-  #端口号 默认为27017
-  port=27017
-  
-  #指定存储引擎（默认不需要指定）
-  #storageEngine=mmapv1
-  
-  #开启网页日志监控，有这个参数就可以在浏览器上用28017查看监控界面
-  httpinterface=true
-  ```
-  
+sudo mongod --dbpath='你的目录'
+```
+### 链接
+```bash
+sudo mongo
+```
+### 退出
+```bash
+exit
+```
+### 基层操作
+#### 查看数据库
+```bash
+show bds
+```
+#### 查看当前链接的数据库
+```bash
+db
+```
+#### 切换到指定数据库
+```bash
+use 数据库名称
+```
+
+### 在 Node 中操作 mongodb 数据库
+> [mongodb](https://www.npmjs.com/package/mongodb)
+> [mongoose](https://mongoosejs.com/)
+> [mongoose中文](https://mongoose.shujuwajue.com/guide/queries.html)
+#### 安装
+```bash
+npm i mongoose -S
+```
+#### 使用
+```js
+const mongoose = require('mongoose');
+// 1. 链接数据库
+// 指定链接的数据库不需要存在，当数据库连接上以后，会自动创建
+mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true});
+
+// 2. 设计集合结构
+// 字段名称就是表结构中的属性名称
+// 约束的目的是为了保证数据的完整性，过滤脏数据
+const Schema = mongoose.Schema;
+const blogSchema = new Schema({
+  title: String,
+  author: String,
+  body: String,
+  comment: [{body: String, data: Date}],
+  date: {type: Date, default: Date.now},
+  hidden: Boolean,
+  meta: {
+    votes: Number,
+    favs: Number
+  }
+});
+
+// 3. 将文档结构发布为模型
+// mongoose.model 将一个架构发布为 model
+// 第一个参数：传入一个首字母为大写的名词表示你的数据库的名称，
+//            mongoose 自动为你转换成小写的 名词复数集合 BLog => blogs
+// 第二个参数：架构 Schame
+const Blog = mongoose.model('Blog', blogSchema);
+
+// 4.实例化
+let newBlog = new Blog({
+  title: 'String',
+  author: 'String',
+  body: 'String',
+  hidden: true,
+  meta: {
+    votes: 1,
+    favs: 2
+  }
+});
+
+```
+##### 添加数据
+```js
+newBlog.save((err,res)=>{
+  if (err){
+    console.log(err);
+    console.log('保存失败');
+  }else{
+    console.log('保存成功');
+    console.log(res);
+  }
+
+  })
+```
+
+##### 查询数据
+* find
+> 查询所有 返回数组
+```js
+Blog.find({},(err,res)=>{})
+```
+* findOne
+> 查询一项
+```js
+Blog.findOne({},(err,res)=>{})
+```
+
+##### 删除数据
+* remove
+```js
+Blog.remove({},(err,res)=>{})
+```
+
+##### 更新数据
+* findByIDAndUpdate
+```js
+Blog.findByIdAndUpdate({},{},(err,res)=>{})
+```
+
+
 ## 封装异步 API
 > 如果需要获取一个函数中异步操作的结果，则必须通过回调函数的方式来获取
 ### 回调函数
