@@ -107,6 +107,26 @@
 > 获取 url 中的 query 等参数
 * url.parse(req.url,true)
 
+### Path
+> 操作路径
+#### path.basename
+> 获取指定文件的名字
+```js
+path.basename('文件名','要去除的后缀名')
+```
+
+#### path.dirname
+> 获取路径
+
+#### path.extname
+> 获取扩展名
+
+#### path.isAbsolute
+> 判断是否是绝对路径
+
+#### path.parse
+> 获取 以上 4个 api 的返回值， 并以对象的方式返回
+
 ### OS
 > 操作系统信息
 
