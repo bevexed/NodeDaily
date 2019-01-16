@@ -394,6 +394,7 @@ use 数据库名称
 > [mongoose](https://mongoosejs.com/)
 > [mongoose中文](https://mongoose.shujuwajue.com/guide/queries.html)
 #### 安装
+> 所有 API 都支持 Promise
 ```bash
 npm i mongoose -S
 ```
@@ -468,17 +469,22 @@ Blog.findOne({},(err,res)=>{})
 ```
 
 ##### 删除数据
-* remove
+* findOneAndDelete
 ```js
-Blog.remove({},(err,res)=>{})
+Blog.findOneAndDelete({},(err,res)=>{})
 ```
 
 ##### 更新数据
-* findByIDAndUpdate
+* findOneAndUpdate
 ```js
-Blog.findByIdAndUpdate({},{},(err,res)=>{})
+Blog.findOneAndUpdate({},{},(err,res)=>{})
 ```
 
+### 在 node 中使用 MySql
+#### 安装
+```bash
+npm i mysql --save
+```
 
 ## 封装异步 API
 > 如果需要获取一个函数中异步操作的结果，则必须通过回调函数的方式来获取

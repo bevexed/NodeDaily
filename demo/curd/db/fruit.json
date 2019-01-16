@@ -1,1 +1,44 @@
-{"title":"fruits","fruits":[{"name":"apple","src":"/public/imgs/apple.jpeg"},{"name":"banana","src":"/public/imgs/banana.jpeg"},{"name":"orange","src":"/public/imgs/orange.jpeg"},{"name":"pear","src":"/public/imgs/pear.jpeg"}],"type":[{"id":16,"fruitName":"12312","date":"323123","price":"123123","amount":"123213213"},{"id":17,"fruitName":"阿房宫温柔","date":"213","price":"12123","amount":"213"},{"id":18,"fruitName":"","date":"","price":"","amount":""}]}
+{
+  "title": [],
+  "fruits": [
+    {
+      "name": "apple",
+      "src": "/public/imgs/apple.jpeg"
+    },
+    {
+      "name": "banana",
+      "src": "/public/imgs/banana.jpeg"
+    },
+    {
+      "name": "orange",
+      "src": "/public/imgs/orange.jpeg"
+    },
+    {
+      "name": "pear",
+      "src": "/public/imgs/pear.jpeg"
+    }
+  ],
+  "type": [
+    {
+      "id": 16,
+      "fruitName": "12312",
+      "date": "323123",
+      "price": "123123",
+      "amount": "123213213"
+    },
+    {
+      "id": 17,
+      "fruitName": "阿房宫温柔",
+      "date": "213",
+      "price": "12123",
+      "amount": "213"
+    },
+    {
+      "id": 18,
+      "fruitName": "",
+      "date": "",
+      "price": "",
+      "amount": ""
+    }
+  ]
+}

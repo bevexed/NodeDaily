@@ -21,6 +21,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "json-server": "json-server --watch ./demo/curd/db/fruit.json",
     "express-start": "nodemon ./express/app.js",
     "express-curd": "nodemon ./demo/curd/app.js",
     "express-curd-mongoose": "nodemon ./demo/curd-mongoose/app.js",
