@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <title></title>
+</head>
+<body>
+<div>
+  {{ include '../_partials/header.html' }}
+  {{ block 'content' }} {{ /block }}
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="../../node_modules/jquery/jquery.min.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</html>

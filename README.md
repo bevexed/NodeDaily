@@ -125,10 +125,21 @@ path.basename('文件名','要去除的后缀名')
 > 判断是否是绝对路径
 
 #### path.parse
-> 获取 以上 4个 api 的返回值， 并以对象的方式返回
+> 以对象的方式返回多个路径属性
+
+#### path.join
+> 拼接路径
 
 ### OS
 > 操作系统信息
+
+## 内置对象
+
+### __dirname
+> 动态 获取 当前文件绝对路径的目录
+
+### __filename
+> 动态 获取 当前文件的绝对路径
 
 
 ## 模块化
@@ -236,7 +247,6 @@ app.listen(3000, function () {
 ### 路由
 #### 引入 Router
 ```js
-// router.js
 const express = require('express')
 const router = express.Router()
 ```
@@ -307,9 +317,7 @@ const express = require('express');
 const app = express();
 app.engine('art', require('express-art-template'));
 // 设置模板路径
-app.set(views, {
-    debug: process.env.NODE_ENV !== 'production'
-});
+app.set('views','路径');
 
 app.get('/', function (req, res) {
     res.render('index.art', {
@@ -320,6 +328,38 @@ app.get('/', function (req, res) {
     });
 });
 ``` 
+#### 模板的继承
+> {{ extend '路径'}}
+```html
+<!--母版页-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  {{block 'style'}}{{/block}}
+</head>
+<body>
+   {{block 'head'}}{{/block}}
+   {{block 'content'}}{{/block}}
+   {{block 'foot'}}{{/block}}
+</body>
+</html>
+
+```
+```html
+<!--子页-->
+{{extend '母板路径'}}
+{{block 'style'}}{{/block}}
+{{block 'head'}}{{/block}}
+{{block 'content'}}{{/block}}
+{{block 'foot'}}{{/block}}
+```
+
+#### 模板引用 
+> {{ include '路径'}}
 
 #### render
 * express 默认为 Response 对象提供了 Render 方法，但是需要配置模板引擎才可以使用
@@ -443,7 +483,7 @@ const blogSchema = new Schema({
 });
 
 // 3. 将文档结构发布为模型
-// mongoose.model 将一个架构发布为 model
+models
 // 第一个参数：传入一个首字母为大写的名词表示你的数据库的名称，
 //            mongoose 自动为你转换成小写的 名词复数集合 BLog => blogs
 // 第二个参数：架构 Schame

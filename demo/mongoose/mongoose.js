@@ -21,7 +21,7 @@ const blogSchema = new Schema({
 });
 
 // 3. 将文档结构发布为模型
-// mongoose.model 将一个架构发布为 model
+// mongoose.models 将一个架构发布为 models
 // 第一个参数：传入一个首字母为大写的名词表示你的数据库的名称，
 //            mongoose 自动为你转换成小写的 名词复数集合 BLog => blogs
 // 第二个参数：架构 Schame
