@@ -7,12 +7,12 @@ router.get('/login', (req, res) => {
 
 router.post('/login.html', async (req, res) => {
   const body = req.body;
-    let user = await User.findOne(body);
-    if (user){
-      req.session.user = user;
-      return res.redirect('/index')
-    }
-    res.status(500).json(user)
+  let user = await User.findOne(body);
+  if (user) {
+    req.session.user = user;
+    return res.redirect('/index')
+  }
+  res.status(500).json(user)
 
 });
 
@@ -38,6 +38,11 @@ router.post('/register.html', async (req, res) => {
 
 router.get('/index', async (req, res) => {
   res.render('index.html', {user: req.session.user});
+});
+
+router.get('/loginout', async (req, res) => {
+  delete req.session.user
+  return res.redirect('/login')
 });
 
 
