@@ -33,6 +33,15 @@ app.use('/assets', express.static(path.join(__dirname, './views/register/assets/
 
 app.use(router);
 
+// 全局错误 处理
+app.use((err, req, res, next) => {
+  res.status(500).json({
+    err_code: 500,
+    message: err
+  })
+
+});
+
 app.listen('9000', () => {
   console.log('running');
 });

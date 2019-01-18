@@ -10,7 +10,7 @@ router.post('/login.html', async (req, res) => {
     let user = await User.findOne(body);
     if (user){
       req.session.user = user;
-      res.redirect('/index')
+      return res.redirect('/index')
     }
     res.status(500).json(user)
 
