@@ -220,6 +220,16 @@ path.basename('文件名','要去除的后缀名')
   - 如果 重新 install 会下载最新版本
   - 锁定版本，防止自动升级
   
+## 中间件
+> 中间处理环节 ，有 输入 和 输出 。本质是函数
+* 中间件接收三个 参数
+  - request
+  - reponse
+  - next
+    - 不调用 next() 则不会进入下一个中间件  
+
+### 404
+> 最后的中间件
 
 ## Express
 > 对原生 http 模块再次封装
@@ -549,6 +559,7 @@ npm i mysql --save
 ## 通过 session 保存登录状态
 - http 是无状态的
 - session 保存凭证
+  - 默认存储在内存中，真正的生产环境 session 需要持久化存储
 - cookie 保存不敏感的信息
 
 ### express-session
@@ -584,6 +595,12 @@ app.use(function (req, res, next) {
   next()
 })
 ```
+#### 配置项
+- secret
+  - 自定义的加密字符串
+- resave
+- sevaUninitialized
+  - 无论是否使用 session 默认给一个 session
 
 
 

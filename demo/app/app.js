@@ -20,7 +20,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     // secure: true, // 设置此属性后，只有在 https 下才会 传输 cookie
-    maxAge: 1000 * 60 * 3
+    // maxAge: 1000 * 60 * 3
   }
 }));
 

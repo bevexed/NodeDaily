@@ -26,7 +26,7 @@ let userSchema = new Scheam({
   },
   avatar: {
     type: String,
-    default: '/pubic/img/avatar.svg'
+    default: '/public/img/avatar.svg'
   },
   bio: {
     type: String,
