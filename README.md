@@ -546,6 +546,47 @@ Blog.findOneAndUpdate({},{},(err,res)=>{})
 npm i mysql --save
 ```
 
+## 通过 session 保存登录状态
+- http 是无状态的
+- session 保存凭证
+- cookie 保存不敏感的信息
+
+### express-session
+#### 安装
+```bash
+npm i express-session -S
+```
+#### 配置
+```js
+// 必须在 router 前
+app.set('trust proxy', 1); // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {secure: true}
+}));
+```
+#### 使用
+> 在 req.session 中可以直接拿到 Session 数据
+```js
+app.use(function (req, res, next) {
+  if (!req.session.views) {
+    req.session.views = {}
+  }
+ 
+  // get the url pathname
+  let pathname = parseurl(req).pathname
+ 
+  // count the views
+  req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
+ 
+  next()
+})
+```
+
+
+
 ## 封装异步 API
 > 如果需要获取一个函数中异步操作的结果，则必须通过回调函数的方式来获取
 ### 回调函数

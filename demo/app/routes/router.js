@@ -22,11 +22,18 @@ router.post('/register.html', async (req, res) => {
     if (await User.findOne({email: body.email})) {return res.status(200).json({state: 1, message: '账号已存在'})}
     if (await User.findOne({nikename: body.nikename})) {return res.status(200).json({state: 1, message: '账号已存在'})}
 
-    await new User(body).save();
-    res.status(200).json({state: 1, message: '注册成功'})
+    await new User(body).save().then(user => req.session.user = user);
+
+    // res.status(200).json({state: 1, message: '注册成功'})
+    res.redirect('./index')
   } catch (e) {
-    res.status(500).json({state: 0, message: '服务器错误'})
+    res.status(500).json({state: 0, message: e})
   }
+});
+
+router.get('/index', async (req, res) => {
+  console.log(req.session.user);
+  res.render('index.html');
 });
 
 
