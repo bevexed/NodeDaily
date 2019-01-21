@@ -277,6 +277,12 @@ app.use('/public/',express.static('./public'))
 // 2. 访问时 不需要 '/public'
 app.use(express.static('./public'))
 ```
+### 接入方式
+- get
+- post
+- patch
+- delete
+
 ### query
 > express 将 query 封装到了 res.query 中
 * query 只能获取 get 请求的数据
