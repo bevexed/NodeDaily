@@ -4,12 +4,26 @@ const app = express();
 
 const tweets = []
 
+
+app.set("views", __dirname + "/views");
+
+app.set('view engine', 'ejs')
+
+
 app.use(express.json())
 
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.get('/', function (req, res) {
-  res.send('Welcome to Node Twitter')
+  let title = 'Chirpie',
+    header = 'Welcome to Chirpie'
+  res.render('index', {
+    title: title,
+    header: header,
+    tweets: tweets,
+    body: 1,
+    stylesheets: ['/public/style.css']
+  })
 })
 
 app.post('/send', function (req, res) {
@@ -26,5 +40,5 @@ app.get('/tweets', function (req, res) {
   res.send(tweets)
 })
 
-app.listen(8000)
+app.listen(7000)
 
