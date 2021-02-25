@@ -17,7 +17,7 @@
     "express-art-template": "^1.0.1",
     "express-session": "^1.15.6",
     "express-static": "^1.2.6",
-    "jquery": "^1.9.1",
+    "jquery": "^3.5.0",
     "mongoose": "^5.4.4",
     "popper.js": "^1.14.6"
   },
